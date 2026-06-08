@@ -9,10 +9,11 @@ export default function ReservationsPage() {
   return (
     <div className="embed-page">
       <iframe
-        src="https://staging.dashboard.spicey.app/widget/salt-steak"
-        style={{ width: '100%', height: '100%', border: 'none', borderRadius: '12px' }}
-        title="Reserve a Table at Salt & Steak"
-        loading="lazy"
+        src="https://staging.dashboard.spicey.app/sk-6th-road/reserve"
+        width="100%"
+        height="700"
+        frameBorder="0"
+        style={{ border: 'none', borderRadius: '12px', overflow: 'hidden' }}
       />
     </div>
   )
