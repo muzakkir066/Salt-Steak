@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 
 const navLinks = [
@@ -16,12 +16,26 @@ const navLinks = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+
+  // Close drawer on route change
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [pathname])
+
+  // Shrink navbar on scroll
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <>
-      <header className="navbar">
-        <Link href="/" className="navbar-logo">
+      <header className={`navbar${scrolled ? ' navbar-scrolled' : ''}`}>
+        {/* Logo */}
+        <Link href="/" className="navbar-logo" onClick={() => setMobileOpen(false)}>
           <Image
             src="https://static.wixstatic.com/media/d0f8bb_108360aa54fc408fabd9d317c06802ce~mv2.png/v1/crop/x_0,y_449,w_1080,h_182/fill/w_382,h_64,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Untitled%20design%20(75).png"
             alt="Salt & Steak Logo"
@@ -31,13 +45,14 @@ export default function Navbar() {
           />
         </Link>
 
-        <nav>
+        {/* Desktop nav */}
+        <nav aria-label="Main navigation">
           <ul className="navbar-links">
             {navLinks.map(link => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  style={{ fontWeight: pathname === link.href ? 700 : 400 }}
+                  className={pathname === link.href ? 'nav-link nav-active' : 'nav-link'}
                 >
                   {link.label}
                 </Link>
@@ -46,33 +61,53 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        <button
-          className="mobile-menu-btn"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? '✕' : '☰'}
-        </button>
+        {/* Right side */}
+        <div className="navbar-right">
+          <Link href="/reservations" className="btn-reserve-nav">
+            Reserve
+          </Link>
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setMobileOpen(prev => !prev)}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+          >
+            <span className={`hamburger${mobileOpen ? ' open' : ''}`}>
+              <span /><span /><span />
+            </span>
+          </button>
+        </div>
       </header>
 
       {/* Mobile Drawer */}
-      {mobileOpen && (
-        <div style={{
-          position: 'fixed', top: '72px', left: 0, right: 0, bottom: 0,
-          background: '#000', zIndex: 999, padding: '32px 24px',
-          display: 'flex', flexDirection: 'column', gap: '24px',
-        }}>
+      <div
+        className={`mobile-drawer${mobileOpen ? ' drawer-open' : ''}`}
+        aria-hidden={!mobileOpen}
+      >
+        <nav className="mobile-nav">
           {navLinks.map(link => (
             <Link
               key={link.href}
               href={link.href}
-              style={{ color: '#fff', fontSize: '22px', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.08em' }}
-              onClick={() => setMobileOpen(false)}
+              className={`mobile-nav-link${pathname === link.href ? ' mobile-nav-active' : ''}`}
             >
               {link.label}
             </Link>
           ))}
-        </div>
+        </nav>
+        <Link href="/reservations" className="btn-outline mobile-reserve-btn">
+          Reserve a Table
+        </Link>
+        <p className="mobile-drawer-hours">Mon – Sun &nbsp;|&nbsp; 4 PM – 12 AM</p>
+      </div>
+
+      {/* Overlay */}
+      {mobileOpen && (
+        <div
+          className="drawer-overlay"
+          onClick={() => setMobileOpen(false)}
+          aria-hidden="true"
+        />
       )}
     </>
   )
