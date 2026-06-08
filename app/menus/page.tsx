@@ -10,10 +10,6 @@ export default function MenusPage() {
     <div className="embed-page">
       <iframe
         src="https://staging.dashboard.spicey.app/widget/sk-6th-road"
-        width="100%"
-        height="600"
-        frameBorder="0"
-        style={{ border: 'none', borderRadius: '12px', overflow: 'hidden' }}
         title="SK-6th-road — Online Menu"
       />
     </div>
