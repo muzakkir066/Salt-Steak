@@ -9,7 +9,7 @@ export default function MenusPage() {
   return (
     <div className="embed-page">
       <iframe
-        src="https://staging.dashboard.spicey.app/widget/sk-6th-road"
+        src="https://staging.dashboard.spicey.app/widget/sk-6th-road?embed=true"
         width="100%"
         height="600"
         frameBorder="0"
