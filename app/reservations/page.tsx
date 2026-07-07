@@ -10,10 +10,10 @@ export default function ReservationsPage() {
   return (
     <div className="embed-page">
       <EmbedFrame
-        src="https://staging.dashboard.spicey.app/sk-6th-road/reserve?embed=true"
+        src="https://staging.dashboard.spicey.app/saltandsteak/reserve?embed=true"
         title="Reserve a Table — Salt & Steak"
         variant="reservation"
-        allow="payment; geolocation"
+        allow="payment *"
       />
     </div>
   )

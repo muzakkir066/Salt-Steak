@@ -10,10 +10,10 @@ export default function MenusPage() {
   return (
     <div className="embed-page">
       <EmbedFrame
-        src="https://staging.dashboard.spicey.app/widget/sk-6th-road?embed=true"
-        title="Online Menu & Ordering — Salt & Steak"
+        src="https://staging.dashboard.spicey.app/widget/saltandsteak?embed=true"
+        title="SaltandSteak — Online Menu"
         variant="menu"
-        allow="payment; geolocation"
+        allow="payment *"
       />
     </div>
   )
