@@ -1,11 +1,14 @@
 import HeroSection from '@/components/HeroSection'
 import FeatureSection from '@/components/FeatureSection'
 import VideoSection from '@/components/VideoSection'
+import OnlineServicesSection from '@/components/OnlineServicesSection'
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
+
+      <OnlineServicesSection />
 
       {/* Video 1 – S&S Dining Story */}
       <VideoSection

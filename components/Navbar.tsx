@@ -6,8 +6,8 @@ import { usePathname } from 'next/navigation'
 
 const navLinks = [
   { label: 'Home', href: '/' },
+  { label: 'Order Online', href: '/menus' },
   { label: 'Reservations', href: '/reservations' },
-  { label: 'Menu', href: '/menus' },
   { label: 'Contact Us', href: '/contact' },
   { label: 'Careers', href: '/careers' },
   { label: 'Blogs', href: '/blog' },
@@ -63,6 +63,9 @@ export default function Navbar() {
 
         {/* Right side */}
         <div className="navbar-right">
+          <Link href="/menus" className="btn-order-nav">
+            Order Online
+          </Link>
           <Link href="/reservations" className="btn-reserve-nav">
             Reserve
           </Link>
@@ -95,9 +98,14 @@ export default function Navbar() {
             </Link>
           ))}
         </nav>
-        <Link href="/reservations" className="btn-outline mobile-reserve-btn">
-          Reserve a Table
-        </Link>
+        <div className="mobile-drawer-actions">
+          <Link href="/menus" className="btn-outline mobile-action-btn mobile-action-btn--gold">
+            🍽 Order Online
+          </Link>
+          <Link href="/reservations" className="btn-outline mobile-action-btn">
+            📅 Reserve a Table
+          </Link>
+        </div>
         <p className="mobile-drawer-hours">Mon – Sun &nbsp;|&nbsp; 4 PM – 12 AM</p>
       </div>
 

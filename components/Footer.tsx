@@ -3,8 +3,8 @@ import Link from 'next/link'
 
 const navLinks = [
   { label: 'Home', href: '/' },
+  { label: 'Order Online', href: '/menus' },
   { label: 'Reservations', href: '/reservations' },
-  { label: 'Menu', href: '/menus' },
   { label: 'Contact Us', href: '/contact' },
   { label: 'Careers', href: '/careers' },
   { label: 'Blogs', href: '/blog' },
@@ -69,8 +69,18 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Right – Nav links */}
+      {/* Right – Nav + Order/Reserve actions */}
       <div className="footer-right">
+        {/* Order & Reserve CTAs */}
+        <div className="footer-order-actions">
+          <Link href="/menus" className="footer-action-btn footer-action-btn--gold">
+            🍽&nbsp; Order Online
+          </Link>
+          <Link href="/reservations" className="footer-action-btn footer-action-btn--outline">
+            📅&nbsp; Reserve a Table
+          </Link>
+        </div>
+
         <p className="footer-nav-heading">Quick Links</p>
         <nav className="footer-nav">
           {navLinks.map(link => (

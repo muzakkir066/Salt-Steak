@@ -13,7 +13,7 @@ export default function HeroSection() {
       />
       <div className="hero-overlay" />
       <div className="hero-buttons">
-        <Link href="/menus" className="btn-outline">MENU</Link>
+        <Link href="/menus" className="btn-outline">ORDER ONLINE</Link>
         <Link href="/reservations" className="btn-outline">RESERVE A TABLE</Link>
       </div>
     </section>

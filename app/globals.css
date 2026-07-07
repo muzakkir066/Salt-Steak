@@ -117,11 +117,33 @@ img, video {
   transform: scaleX(1) !important;
 }
 
-/* Reserve CTA in navbar */
+/* Navbar CTAs (Order + Reserve) */
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
+}
+
+/* Order Online — filled gold */
+.btn-order-nav {
+  display: inline-block;
+  padding: 9px 20px;
+  background: #AB7F0A;
+  border: 1.5px solid #AB7F0A;
+  color: #000;
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background 0.2s, border-color 0.2s;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.btn-order-nav:hover {
+  background: #c4930c;
+  border-color: #c4930c;
 }
 
 .btn-reserve-nav {
@@ -237,12 +259,31 @@ img, video {
   color: #AB7F0A !important;
 }
 
-.mobile-reserve-btn {
+.mobile-drawer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   margin-top: 28px;
+  align-self: stretch;
+}
+
+.mobile-action-btn {
   text-align: center;
   font-size: 15px !important;
-  padding: 16px 32px !important;
-  align-self: flex-start;
+  padding: 16px 28px !important;
+  letter-spacing: 0.1em;
+}
+
+.mobile-action-btn--gold {
+  background: #AB7F0A !important;
+  border-color: #AB7F0A !important;
+  color: #000 !important;
+}
+
+.mobile-action-btn--gold:hover {
+  background: #c4930c !important;
+  border-color: #c4930c !important;
+  color: #000 !important;
 }
 
 .mobile-drawer-hours {
@@ -502,6 +543,127 @@ img, video {
   font-family: 'Oswald', sans-serif;
 }
 
+/* ─── Online Services Section ───────────────────────────── */
+.online-services {
+  background: #0a0a0a;
+  border-top: 3px solid #AB7F0A;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 88px 64px;
+  text-align: center;
+}
+
+.os-badge {
+  display: inline-block;
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #AB7F0A;
+  border: 1px solid rgba(171, 127, 10, 0.45);
+  padding: 6px 18px;
+  border-radius: 20px;
+  margin-bottom: 22px;
+}
+
+.os-heading {
+  font-size: 54px;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.os-sub {
+  color: #777;
+  font-size: 17px;
+  font-style: italic;
+  max-width: 480px;
+  margin: 0 auto 56px;
+  line-height: 1.7;
+}
+
+.os-cards {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.os-divider {
+  background: rgba(255, 255, 255, 0.09);
+  margin: 16px 0;
+}
+
+.os-card {
+  padding: 0 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 14px;
+}
+
+.os-card-icon {
+  font-size: 36px;
+  line-height: 1;
+}
+
+.os-card h3 {
+  font-size: 30px;
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.os-card p {
+  color: #888;
+  font-size: 15px;
+  line-height: 1.75;
+  font-style: italic;
+  margin: 0;
+}
+
+.os-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 13px 28px;
+  margin-top: 4px;
+  border-radius: 3px;
+  transition: all 0.2s;
+  border: 2px solid transparent;
+}
+
+.os-btn--gold {
+  background: #AB7F0A;
+  color: #000;
+  border-color: #AB7F0A;
+}
+
+.os-btn--gold:hover {
+  background: #c4930c;
+  border-color: #c4930c;
+}
+
+.os-btn--outline {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+
+.os-btn--outline:hover {
+  background: #fff;
+  color: #000;
+}
+
 /* ─── Footer ────────────────────────────────────────────── */
 .footer {
   display: grid;
@@ -604,6 +766,52 @@ img, video {
   justify-content: center;
   gap: 6px;
   border-top: 3px solid #1567a0;
+}
+
+/* Footer order/reserve action buttons */
+.footer-order-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-self: stretch;
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-action-btn {
+  display: block;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.footer-action-btn--gold {
+  background: #AB7F0A;
+  color: #000;
+  border: 1.5px solid #AB7F0A;
+}
+
+.footer-action-btn--gold:hover {
+  background: #c4930c;
+  border-color: #c4930c;
+}
+
+.footer-action-btn--outline {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+}
+
+.footer-action-btn--outline:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .footer-nav-heading {
@@ -710,12 +918,37 @@ img, video {
     display: none;
   }
 
+  .btn-order-nav,
   .btn-reserve-nav {
     display: none;
   }
 
   .mobile-menu-btn {
     display: block;
+  }
+
+  /* Online services section */
+  .online-services {
+    padding: 64px 28px;
+  }
+
+  .os-heading {
+    font-size: 36px;
+  }
+
+  .os-cards {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .os-divider {
+    height: 1px;
+    width: 100%;
+    margin: 32px 0;
+  }
+
+  .os-card {
+    padding: 0 8px;
   }
 
   /* Hero */
