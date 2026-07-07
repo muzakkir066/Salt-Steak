@@ -13,7 +13,7 @@ export default function ReservationsPage() {
         src="https://staging.dashboard.spicey.app/saltandsteak/reserve?embed=true"
         title="Reserve a Table — Salt & Steak"
         variant="reservation"
-        allow="payment *"
+        allow="payment *; geolocation; storage-access"
       />
     </div>
   )

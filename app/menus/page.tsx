@@ -13,7 +13,7 @@ export default function MenusPage() {
         src="https://staging.dashboard.spicey.app/widget/saltandsteak?embed=true"
         title="SaltandSteak — Online Menu"
         variant="menu"
-        allow="payment *"
+        allow="payment *; geolocation; storage-access"
       />
     </div>
   )

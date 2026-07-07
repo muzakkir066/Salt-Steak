@@ -12,7 +12,7 @@ export default function EmbedFrame({
   src,
   title,
   variant,
-  allow = 'payment; geolocation',
+  allow = 'payment *; geolocation; storage-access',
 }: Props) {
   const [ready, setReady] = useState(false)
   const [error, setError] = useState(false)
@@ -27,7 +27,6 @@ export default function EmbedFrame({
       title={title}
       allow={allow}
       loading="eager"
-      referrerPolicy="strict-origin-when-cross-origin"
       className={`embed-iframe${ready ? ' embed-iframe--visible' : ''}`}
       onLoad={() => setReady(true)}
       onError={() => setError(true)}
