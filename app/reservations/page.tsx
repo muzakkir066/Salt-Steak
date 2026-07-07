@@ -1,20 +1,18 @@
 import type { Metadata } from 'next'
+import EmbedFrame from '@/components/EmbedFrame'
 
 export const metadata: Metadata = {
   title: 'Reservations | Salt & Steak',
-  description: 'Reserve a table or order online at Salt & Steak.',
+  description: 'Reserve a table at Salt & Steak — Halal fine dining in Delta, BC.',
 }
 
 export default function ReservationsPage() {
   return (
     <div className="embed-page">
-      <iframe
+      <EmbedFrame
         src="https://staging.dashboard.spicey.app/sk-6th-road/reserve?embed=true"
-        width="100%"
-        height="700"
-        frameBorder="0"
-        style={{ border: 'none', borderRadius: '12px', overflow: 'hidden' }}
-        title="Reserve a Table — SK 6th Road"
+        title="Reserve a Table — Salt & Steak"
+        allow="payment; geolocation"
       />
     </div>
   )
