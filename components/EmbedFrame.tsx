@@ -24,10 +24,8 @@ export default function EmbedFrame({
 
   return (
     <div className="embed-frame">
-      {status === 'loading' && (
-        variant === 'menu' ? <MenuSkeleton /> : <ReservationSkeleton />
-      )}
-      {status === 'error' && (
+      {status === 'loading' && <EmbedLoader variant={variant} />}
+      {status === 'error'   && (
         <EmbedError onRetry={() => { setStatus('loading'); window.location.reload() }} />
       )}
       <iframe
@@ -46,121 +44,31 @@ export default function EmbedFrame({
   )
 }
 
-/* ─────────────────────────────────────────────────────────
-   Menu Skeleton — category tabs + food cards grid
-───────────────────────────────────────────────────────── */
-function MenuSkeleton() {
+/* ── Themed loader ─────────────────────────────────────── */
+function EmbedLoader({ variant }: { variant: 'menu' | 'reservation' }) {
   return (
-    <div className="embed-skeleton" aria-label="Loading menu…" aria-busy="true">
-      {/* Search bar */}
-      <div className="msk-search">
-        <div className="sk-shimmer" style={{ height: 44, borderRadius: 8 }} />
-      </div>
-
-      {/* Category tabs */}
-      <div className="msk-tabs">
-        {[72, 88, 64, 96, 80, 68].map((w, i) => (
-          <div
-            key={i}
-            className="msk-tab sk-shimmer"
-            style={{ width: w, animationDelay: `${i * 0.08}s` }}
+    <div className="embed-loader" aria-label="Loading…" aria-busy="true">
+      <div className="embed-loader-ring">
+        <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="28" cy="28" r="24" stroke="rgba(171,127,10,0.15)" strokeWidth="4" />
+          <circle
+            cx="28" cy="28" r="24"
+            stroke="#AB7F0A"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeDasharray="38 113"
+            className="embed-loader-arc"
           />
-        ))}
+        </svg>
       </div>
-
-      {/* Section heading */}
-      <div className="msk-section-label">
-        <div className="sk-shimmer" style={{ width: 140, height: 14, borderRadius: 4 }} />
-      </div>
-
-      {/* Cards grid */}
-      <div className="msk-grid">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="msk-card" style={{ animationDelay: `${i * 0.07}s` }}>
-            <div className="msk-card-img sk-shimmer" />
-            <div className="msk-card-body">
-              <div className="sk-shimmer" style={{ height: 14, width: '80%', borderRadius: 4, marginBottom: 6 }} />
-              <div className="sk-shimmer" style={{ height: 11, width: '60%', borderRadius: 4, marginBottom: 4 }} />
-              <div className="sk-shimmer" style={{ height: 11, width: '45%', borderRadius: 4, marginBottom: 12 }} />
-              <div className="msk-card-footer">
-                <div className="sk-shimmer" style={{ height: 16, width: 48, borderRadius: 4 }} />
-                <div className="msk-add-btn sk-shimmer" />
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <p className="embed-loader-label">
+        {variant === 'menu' ? 'Loading Menu…' : 'Loading Reservations…'}
+      </p>
     </div>
   )
 }
 
-/* ─────────────────────────────────────────────────────────
-   Reservation Skeleton — booking form fields
-───────────────────────────────────────────────────────── */
-function ReservationSkeleton() {
-  return (
-    <div className="embed-skeleton rsk-skeleton" aria-label="Loading reservation form…" aria-busy="true">
-      {/* Heading */}
-      <div className="rsk-heading">
-        <div className="sk-shimmer" style={{ height: 28, width: 200, borderRadius: 6, marginBottom: 8 }} />
-        <div className="sk-shimmer" style={{ height: 13, width: 280, borderRadius: 4 }} />
-      </div>
-
-      {/* Date + Time row */}
-      <div className="rsk-row">
-        <div className="rsk-field">
-          <div className="rsk-label sk-shimmer" />
-          <div className="rsk-input sk-shimmer" />
-        </div>
-        <div className="rsk-field">
-          <div className="rsk-label sk-shimmer" />
-          <div className="rsk-input sk-shimmer" />
-        </div>
-      </div>
-
-      {/* Guest count */}
-      <div className="rsk-field-full">
-        <div className="rsk-label sk-shimmer" style={{ width: 80 }} />
-        <div className="rsk-guests">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="rsk-guest-chip sk-shimmer" style={{ animationDelay: `${i * 0.05}s` }} />
-          ))}
-        </div>
-      </div>
-
-      {/* Name */}
-      <div className="rsk-field-full">
-        <div className="rsk-label sk-shimmer" style={{ width: 70 }} />
-        <div className="rsk-input sk-shimmer" />
-      </div>
-
-      {/* Email + Phone row */}
-      <div className="rsk-row">
-        <div className="rsk-field">
-          <div className="rsk-label sk-shimmer" />
-          <div className="rsk-input sk-shimmer" />
-        </div>
-        <div className="rsk-field">
-          <div className="rsk-label sk-shimmer" />
-          <div className="rsk-input sk-shimmer" />
-        </div>
-      </div>
-
-      {/* Special requests */}
-      <div className="rsk-field-full">
-        <div className="rsk-label sk-shimmer" style={{ width: 130 }} />
-        <div className="rsk-textarea sk-shimmer" />
-      </div>
-
-      {/* Submit button */}
-      <div className="rsk-submit sk-shimmer" />
-    </div>
-  )
-}
-
-/* ─────────────────────────────────────────────────────────
-   Error state
-───────────────────────────────────────────────────────── */
+/* ── Error state ───────────────────────────────────────── */
 function EmbedError({ onRetry }: { onRetry: () => void }) {
   return (
     <div className="embed-error" role="alert">
