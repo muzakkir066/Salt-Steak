@@ -5,14 +5,14 @@ export default function OnlineServicesSection() {
     <section className="online-services">
       <span className="os-badge">Now Available Online</span>
 
-      <h2 className="os-heading">Order &amp; Reserve From Anywhere</h2>
-      <p className="os-sub">
+      <h2 className="os-heading reveal">Order &amp; Reserve From Anywhere</h2>
+      <p className="os-sub reveal delay-1">
         Enjoy Salt &amp; Steak at home or secure your table — it takes less than a minute.
       </p>
 
       <div className="os-cards">
         {/* Order Online */}
-        <div className="os-card">
+        <div className="os-card reveal delay-2">
           <div className="os-card-icon">🍽</div>
           <h3>Order Online</h3>
           <p>
@@ -28,7 +28,7 @@ export default function OnlineServicesSection() {
         <div className="os-divider" aria-hidden="true" />
 
         {/* Reserve */}
-        <div className="os-card">
+        <div className="os-card reveal delay-3">
           <div className="os-card-icon">📅</div>
           <h3>Reserve a Table</h3>
           <p>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ScrollReveal from '@/components/ScrollReveal'
 
 export const metadata: Metadata = {
   title: 'Salt & Steak | Halal Fine Dining Delta BC',
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navbar />
+        <ScrollReveal />
         <main>{children}</main>
         <Footer />
       </body>

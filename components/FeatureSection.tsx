@@ -18,17 +18,20 @@ export default function FeatureSection({
   imageAlt,
   imagePosition = 'right',
 }: FeatureSectionProps) {
+  const textReveal = imagePosition === 'right' ? 'reveal-left' : 'reveal-right'
+  const imageReveal = imagePosition === 'right' ? 'reveal-right' : 'reveal-left'
+
   const textBlock = (
-    <div className="feature-text">
+    <div className={`feature-text ${textReveal}`}>
       <h2>{title}</h2>
       {subtitle && <p className="subtitle">{subtitle}</p>}
       <p>{description}</p>
-      <Link href="/reservations" className="btn-reserve">TABLE RESERVATION</Link>
+      <Link href="/reservations" className="btn-reserve">Table Reservation</Link>
     </div>
   )
 
   const imageBlock = (
-    <div className="feature-image">
+    <div className={`feature-image ${imageReveal}`}>
       <Image
         src={imageSrc}
         alt={imageAlt}

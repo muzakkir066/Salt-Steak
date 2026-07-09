@@ -12,9 +12,21 @@ export default function HeroSection() {
         priority
       />
       <div className="hero-overlay" />
-      <div className="hero-buttons">
-        <Link href="/menus" className="btn-outline">ORDER ONLINE</Link>
-        <Link href="/reservations" className="btn-outline">RESERVE A TABLE</Link>
+
+      <div className="hero-content">
+        <p className="hero-eyebrow">Halal Fine Dining &nbsp;·&nbsp; Delta, BC</p>
+        <h1 className="hero-title">
+          Premium<br />
+          <em>Halal</em><br />
+          Dining
+        </h1>
+        <p className="hero-subtitle">
+          Where every bite tells a story of craft and culture.
+        </p>
+        <div className="hero-buttons">
+          <Link href="/menus" className="btn-gold">Order Online</Link>
+          <Link href="/reservations" className="btn-outline">Reserve a Table</Link>
+        </div>
       </div>
     </section>
   )
