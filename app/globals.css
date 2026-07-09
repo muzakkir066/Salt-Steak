@@ -61,6 +61,18 @@ img, video {
   100% { background-position:  200% center; }
 }
 
+@keyframes expandWidth {
+  from { width: 0; opacity: 0; }
+  to   { width: 100px; opacity: 1; }
+}
+
+@keyframes floatParticle {
+  0%   { transform: translateY(0)    translateX(0);   opacity: 0; }
+  20%  { opacity: 0.7; }
+  80%  { opacity: 0.5; }
+  100% { transform: translateY(-60px) translateX(14px); opacity: 0; }
+}
+
 @keyframes badgePulse {
   0%, 100% { border-color: rgba(171, 127, 10, 0.45); color: #AB7F0A; }
   50%       { border-color: rgba(171, 127, 10, 1);   color: #c4930c; }
@@ -368,19 +380,47 @@ img, video {
   overflow: hidden;
 }
 
+/* Parallax image wrapper — extends 15% beyond hero so parallax has room */
+.hero-bg {
+  position: absolute;
+  top: -15%;
+  left: 0;
+  right: 0;
+  bottom: -15%;
+  z-index: 0;
+  will-change: transform;
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to top,  rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.18) 42%, transparent 65%),
-    linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.08) 55%, transparent 80%);
+    linear-gradient(to top,  rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.22) 42%, transparent 65%),
+    linear-gradient(to right, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.1) 58%, transparent 82%);
   z-index: 1;
+}
+
+/* Floating gold particles */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-particle {
+  position: absolute;
+  background: #AB7F0A;
+  border-radius: 50%;
+  animation: floatParticle linear infinite;
+  opacity: 0;
 }
 
 .hero-content {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -406,6 +446,16 @@ img, video {
   height: 1px;
   background: #AB7F0A;
   flex-shrink: 0;
+}
+
+/* Animated gold rule between eyebrow and title */
+.hero-divider {
+  height: 1px;
+  background: linear-gradient(90deg, #AB7F0A 0%, rgba(171,127,10,0.3) 70%, transparent 100%);
+  margin-bottom: 26px;
+  width: 0;
+  opacity: 0;
+  animation: expandWidth 0.9s ease 0.55s both;
 }
 
 .hero-title {
@@ -450,7 +500,7 @@ img, video {
   position: absolute;
   top: 104px;
   right: 48px;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   align-items: center;
   gap: 13px;
@@ -538,7 +588,7 @@ img, video {
   bottom: 28px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
